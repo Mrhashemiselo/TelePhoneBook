@@ -1,6 +1,7 @@
 using Application;
 using Security;
 using Domain;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddMvc();
 
 builder.Services.AddApplication();
-builder.Services.AddDomain();
+var sqlConnStr = builder.Configuration.GetConnectionString("SqlConnection");
+builder.Services.AddDomain(sqlConnStr);
 builder.Services.AddSecurity();
 
 var app = builder.Build();

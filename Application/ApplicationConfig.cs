@@ -2,7 +2,7 @@
 
 namespace Application
 {
-    public static class DependencyInjection
+    public static class ApplicationConfig
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
