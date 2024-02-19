@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body class="container-fluid">
+    <div class="row">
+        @* <div class="col-3">
+            <vc:category-side-box></vc:category-side-box>
+            <vc:basket-summary></vc:basket-summary>
+        </div> *@
+        <div class="col-12">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

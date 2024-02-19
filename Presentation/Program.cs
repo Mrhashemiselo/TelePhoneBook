@@ -1,18 +1,22 @@
 using Application;
-using Security;
+using Application.Implement.Contacts;
+using Application.Interfaces.Contacts;
 using Domain;
-using Microsoft.Extensions.Configuration;
+using Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddMvc();
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddApplication();
 var sqlConnStr = builder.Configuration.GetConnectionString("SqlConnection");
 builder.Services.AddDomain(sqlConnStr);
 builder.Services.AddSecurity();
+
+builder.Services.AddScoped<IContactsBehavior, ContactsBehavior>();
 
 var app = builder.Build();
 
@@ -32,5 +36,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
